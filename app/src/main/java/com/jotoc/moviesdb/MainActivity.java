@@ -16,7 +16,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,11 +63,13 @@ public class MainActivity extends AppCompatActivity {
         return null;
     }
 
-    private void initViews(){
+    private void initViews() {
         pd = new ProgressDialog(this);
         pd.setMessage("Fetching movies...");
         pd.setCancelable(false);
         pd.show();
+        pd.dismiss();
+
 
         recyclerView = findViewById(R.id.recycler_view);
 
@@ -77,10 +78,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Setting number of columns in GridLayout for Portrait and Landscape orientations;
-        if (getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+        if (getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
-        }else{
+        } else {
             recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
         }
 
@@ -92,31 +93,31 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void loadJSON(){
+    private void loadJSON() {
 
 
         MovieApiClient Client = new MovieApiClient();
         MovieApiService apiService =
                 Client.getClient().create(MovieApiService.class);
         Call<MoviesResponse> call = apiService.getPopularMovies(BuildConfig.THE_MOVIE_DB_API_TOKEN);
-        call.enqueue (new Callback <MoviesResponse>(){
+        call.enqueue(new Callback<MoviesResponse>() {
             @Override
             public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
-            List<Movie> movies = response.body().getResults();
-            recyclerView.setAdapter(new MovieAdapter(getApplicationContext(),movies));
-            recyclerView.smoothScrollToPosition(0);
-            if (swipeContainer.isRefreshing()){
-                swipeContainer.setRefreshing(false);
-            }
+                List<Movie> movies = response.body().getResults();
+                recyclerView.setAdapter(new MovieAdapter(getApplicationContext(), movies));
+                recyclerView.smoothScrollToPosition(0);
+                if (swipeContainer.isRefreshing()) {
+                    swipeContainer.setRefreshing(false);
+                }
             }
 
             @Override
             public void onFailure(Call<MoviesResponse> call, Throwable t) {
                 Log.d("Error", t.getMessage());
-                Toast.makeText(MainActivity.this, "Error fetching data!", Toast.LENGTH_SHORT);
+                Toast.makeText(MainActivity.this, "Error fetching data!", Toast.LENGTH_SHORT).show();
 
             }
         });
-        }
     }
+}
 

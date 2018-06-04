@@ -60,7 +60,7 @@ public class Movie {
 
     //Defining a base method for retrieving MoviePosters
     public String getPosterPath(){
-        return "https://image.tmdb.org/t/p/w500" + posterPath;
+        return "https://image.tmdb.org/t/p/w500/" + posterPath;
     }
 
     //Defining getters and setters.
