@@ -1,42 +1,175 @@
 package com.jotoc.moviesdb;
-//Creating a Movie Class to represent a single movie.
+
+import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
+import java.util.List;
+
+//Creating a Movie Class to represent a single movie. Serialized name attributes
+// taken from JSON converter and themoviedb.com.
 public class Movie {
 
-    private String movieTitle;
-    private String movieDescription;
-    private String movieBackdrop;
-    private String moviePoster;
+    @SerializedName("poster_path")
+    private String posterPath;
+    @SerializedName("adult")
+    private boolean adult;
+    @SerializedName("overview")
+    private String overview;
+    @SerializedName("release_date")
+    private String releaseDate;
+    @SerializedName("genre_ids")
+    private List<Integer> genreIds;
+    @SerializedName("id")
+    private Integer id;
+    @SerializedName("original_title")
+    private String originalTitle;
+    @SerializedName("original_language")
+    private String originalLanguage;
+    @SerializedName("title")
+    private String title;
+    @SerializedName("backdrop_path")
+    private String backdropPath;
+    @SerializedName("popularity")
+    private Double popularity;
+    @SerializedName("vote_count")
+    private Integer voteCount;
+    @SerializedName("video")
+    private Boolean video;
+    @SerializedName("vote_average")
+    private Double voteAverage;
 
-    public String getMovieTitle(){
-        return movieTitle;
+    //making Movie Constructor.
+    public Movie(String posterPath, boolean adult, String overview, String releaseDate, List<Integer> genreIds, Integer id,
+                 String originalTitle, String originalLanguage, String title, String backdropPath, Double popularity, Integer voteCount,
+                 Boolean video, Double voteAverage){
+        this.posterPath = posterPath;
+        this.adult = adult;
+        this.overview = overview;
+        this.releaseDate = releaseDate;
+        this.genreIds = genreIds;
+        this.id = id;
+        this.originalTitle = originalTitle;
+        this.originalLanguage = originalLanguage;
+        this.title = title;
+        this.backdropPath = backdropPath;
+        this.popularity = popularity;
+        this.voteCount = voteCount;
+        this.video = video;
+        this.voteAverage = voteAverage;
     }
 
-    public void setMovieTitle(String title){
-        movieTitle = title;
+    //Defining a base method for retrieving MoviePosters
+    public String getPosterPath(){
+        return "https://image.tmdb.org/t/p/w500" + posterPath;
     }
 
-    public String getMovieDescription(){
-        return movieDescription;
+    //Defining getters and setters.
+    public void setPosterPath(String posterPath){
+        this.posterPath = posterPath;
     }
 
-    public void setMovieDescription(String description){
-        movieDescription = description;
+    public boolean isAdult(){
+        return adult;
     }
 
-    public String getPoster(){
-        return moviePoster;
+    public void setAdult(boolean adult){
+        this.adult = adult;
     }
 
-    public void setPoster(String poster){
-        moviePoster = poster;
+    public String getOverview(){
+        return overview;
     }
 
-    public String getMovieBackdrop(){
-        return movieBackdrop;
+    public void setOverview(String overview){
+        this.overview = overview;
     }
 
-    public void setMovieBackdrop(String backdrop){
-        movieBackdrop = backdrop;
+    public String getReleaseDate(){
+        return releaseDate;
+    }
+
+    public void setReleaseDate(String releaseDate){
+        this.releaseDate = releaseDate;
+    }
+
+    public List<Integer> getGenreIds() {
+        return genreIds;
+    }
+
+    public void setGenreIds(List<Integer> genreIds){
+        this.genreIds = genreIds;
+    }
+
+    public Integer getId(){
+        return id;
+    }
+
+    public void setId(Integer id){
+        this.id = id;
+    }
+
+    public String getOriginalTitle() {
+        return originalTitle;
+    }
+
+    public void setOriginalTitle(String originalTitle){
+        this.originalTitle = originalTitle;
+    }
+
+    public String getOriginalLanguage() {
+        return originalLanguage;
+    }
+
+    public void setOriginalLanguage(String originalLanguage){
+        this.originalLanguage = originalLanguage;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title){
+        this.title = title;
+    }
+
+    public String getBackdropPath() {
+        return backdropPath;
+    }
+
+    public void setBackdropPath(String backdropPath){
+        this.backdropPath = backdropPath;
+    }
+
+    public double getpopularity() {
+        return popularity;
+    }
+
+    public void setPopularity(double popularity){
+        this.popularity = popularity;
+    }
+
+    public Integer getVoteCount() {
+        return voteCount;
+    }
+
+    public void setVoteCount(Integer voteCount){
+        this.voteCount = voteCount;
+    }
+
+    public boolean getVideo() {
+        return video;
+    }
+
+    public void setVideo(boolean backdropPath){
+        this.video = video;
+    }
+
+    public double getVoteAverage() {
+        return voteAverage;
+    }
+
+    public void setVoteAverage(double voteAverage){
+        this.voteAverage = voteAverage;
     }
 
 }
