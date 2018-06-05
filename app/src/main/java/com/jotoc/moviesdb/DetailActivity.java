@@ -22,14 +22,11 @@ public class DetailActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        initCollapsingToolbar();
 
-        imageView = findViewById(R.id.thumbnail_image_header);
+        imageView = findViewById(R.id.moviePoster);
         nameOfMovie = findViewById(R.id.title);
         plotSynopsis = findViewById(R.id.plotsynopsis);
         userRating = findViewById(R.id.userrating);
@@ -40,7 +37,7 @@ public class DetailActivity extends AppCompatActivity {
         if(intentThatStartedThisActivity.hasExtra("original_title")){
 
             String thumbnail = getIntent().getExtras().getString("poster_path");
-            String movieName = getIntent().getExtras().getString("movie_title");
+            String movieName = getIntent().getExtras().getString("original_title");
             String synopsis = getIntent().getExtras().getString("overview");
             String rating = getIntent().getExtras().getString("vote_average");
             String dateOfRelease = getIntent().getExtras().getString("release_date");
@@ -56,35 +53,5 @@ public class DetailActivity extends AppCompatActivity {
         }else{
             Toast.makeText(this, "No_API_KEY", Toast.LENGTH_SHORT).show();
         }
-    }
-    //Initialize collapsing toolBar
-
-    private void initCollapsingToolbar(){
-        final CollapsingToolbarLayout collapsingToolbarLayout =
-                findViewById(R.id.collapsing_toolbar);
-        collapsingToolbarLayout.setTitle(" ");
-        final AppBarLayout appBar = findViewById(R.id.appbar);
-        appBar.setExpanded(true);
-
-        //Hide And Show title when appbar expanded and collapsed
-
-        appBar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener(){
-            boolean isShown = false;
-            int scrollRange = -1;
-
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset){
-                if (scrollRange == 1){
-                    scrollRange = appBarLayout.getTotalScrollRange();
-                }
-                if (scrollRange + verticalOffset == 0){
-                    collapsingToolbarLayout.setTitle(getString(R.string.movie_details));
-                    isShown = true;
-                }else if (isShown){
-                    collapsingToolbarLayout.setTitle("");
-                    isShown = false;
-                }
-            }
-        });
     }
 }
