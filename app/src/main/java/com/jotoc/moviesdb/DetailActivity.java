@@ -30,7 +30,7 @@ public class DetailActivity extends AppCompatActivity {
         initCollapsingToolbar();
 
         imageView = findViewById(R.id.thumbnail_image_header);
-        nameOfMovie = findViewById(R.id.movietitle);
+        nameOfMovie = findViewById(R.id.title);
         plotSynopsis = findViewById(R.id.plotsynopsis);
         userRating = findViewById(R.id.userrating);
         releaseDate = findViewById(R.id.release_date);
@@ -77,7 +77,7 @@ public class DetailActivity extends AppCompatActivity {
                 if (scrollRange == 1){
                     scrollRange = appBarLayout.getTotalScrollRange();
                 }
-                if (scrollRange == 0){
+                if (scrollRange + verticalOffset == 0){
                     collapsingToolbarLayout.setTitle(getString(R.string.movie_details));
                     isShown = true;
                 }else if (isShown){
