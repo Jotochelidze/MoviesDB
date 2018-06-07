@@ -41,7 +41,7 @@ public class Movie {
     //making Movie Constructor.
     public Movie(String posterPath, boolean adult, String overview, String releaseDate, List<Integer> genreIds, Integer id,
                  String originalTitle, String originalLanguage, String title, String backdropPath, Double popularity, Integer voteCount,
-                 Boolean video, Double voteAverage){
+                 Boolean video, Double voteAverage) {
         this.posterPath = posterPath;
         this.adult = adult;
         this.overview = overview;
@@ -59,36 +59,36 @@ public class Movie {
     }
 
     //Defining a base method for retrieving MoviePosters
-    public String getPosterPath(){
+    public String getPosterPath() {
         return "https://image.tmdb.org/t/p/w500/" + posterPath;
     }
 
     //Defining getters and setters.
-    public void setPosterPath(String posterPath){
+    public void setPosterPath(String posterPath) {
         this.posterPath = posterPath;
     }
 
-    public boolean isAdult(){
+    public boolean isAdult() {
         return adult;
     }
 
-    public void setAdult(boolean adult){
+    public void setAdult(boolean adult) {
         this.adult = adult;
     }
 
-    public String getOverview(){
+    public String getOverview() {
         return overview;
     }
 
-    public void setOverview(String overview){
+    public void setOverview(String overview) {
         this.overview = overview;
     }
 
-    public String getReleaseDate(){
+    public String getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(String releaseDate){
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 
@@ -96,15 +96,15 @@ public class Movie {
         return genreIds;
     }
 
-    public void setGenreIds(List<Integer> genreIds){
+    public void setGenreIds(List<Integer> genreIds) {
         this.genreIds = genreIds;
     }
 
-    public Integer getId(){
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id){
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -112,7 +112,7 @@ public class Movie {
         return originalTitle;
     }
 
-    public void setOriginalTitle(String originalTitle){
+    public void setOriginalTitle(String originalTitle) {
         this.originalTitle = originalTitle;
     }
 
@@ -120,7 +120,7 @@ public class Movie {
         return originalLanguage;
     }
 
-    public void setOriginalLanguage(String originalLanguage){
+    public void setOriginalLanguage(String originalLanguage) {
         this.originalLanguage = originalLanguage;
     }
 
@@ -128,7 +128,7 @@ public class Movie {
         return title;
     }
 
-    public void setTitle(String title){
+    public void setTitle(String title) {
         this.title = title;
     }
 
@@ -136,7 +136,7 @@ public class Movie {
         return backdropPath;
     }
 
-    public void setBackdropPath(String backdropPath){
+    public void setBackdropPath(String backdropPath) {
         this.backdropPath = backdropPath;
     }
 
@@ -144,7 +144,7 @@ public class Movie {
         return popularity;
     }
 
-    public void setPopularity(double popularity){
+    public void setPopularity(double popularity) {
         this.popularity = popularity;
     }
 
@@ -152,7 +152,7 @@ public class Movie {
         return voteCount;
     }
 
-    public void setVoteCount(Integer voteCount){
+    public void setVoteCount(Integer voteCount) {
         this.voteCount = voteCount;
     }
 
@@ -160,7 +160,7 @@ public class Movie {
         return video;
     }
 
-    public void setVideo(boolean backdropPath){
+    public void setVideo(boolean backdropPath) {
         this.video = video;
     }
 
@@ -168,7 +168,7 @@ public class Movie {
         return voteAverage;
     }
 
-    public void setVoteAverage(double voteAverage){
+    public void setVoteAverage(double voteAverage) {
         this.voteAverage = voteAverage;
     }
 

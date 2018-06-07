@@ -15,6 +15,9 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 //Creating Adapter.
 
@@ -30,12 +33,15 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     @Override
     public MovieAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.movie_card, viewGroup, false);
+
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final MovieAdapter.ViewHolder viewHolder, int i){
+
         viewHolder.title.setText(movieList.get(i).getOriginalTitle());
         String vote = Double.toString(movieList.get(i).getVoteAverage());
         viewHolder.userRating.setText(vote);
@@ -52,17 +58,17 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
+        @BindView(R.id.title)
+        TextView title;
+        @BindView(R.id.userrating)
+        TextView userRating;
+        @BindView(R.id.thumbnail)
+        ImageView thumbnail;
 
-        public TextView title, userRating;
-
-        public ImageView thumbnail;
 
         public ViewHolder(View view){
             super((view));
-            title = view.findViewById(R.id.title);
-            userRating = view.findViewById(R.id.userrating);
-            thumbnail = view.findViewById(R.id.thumbnail);
-
+            ButterKnife.bind(this, view);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

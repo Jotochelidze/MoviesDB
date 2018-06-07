@@ -19,29 +19,35 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-
-    private RecyclerView recyclerView;
     private MovieAdapter adapter;
     private List<Movie> movieList;
     ProgressDialog pd;
-    private SwipeRefreshLayout swipeContainer;
     private static final String LOG_TAG = MovieAdapter.class.getName();
+
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
+
+    @BindView(R.id.main_content)
+    SwipeRefreshLayout swipeContainer;
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         initViews();
 
-        swipeContainer = findViewById(R.id.main_content);
+
         swipeContainer.setColorSchemeResources(android.R.color.holo_orange_dark);
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -63,15 +69,14 @@ public class MainActivity extends AppCompatActivity {
         return null;
     }
 
+
     private void initViews() {
         pd = new ProgressDialog(this);
         pd.setMessage("Fetching movies...");
         pd.setCancelable(false);
         pd.show();
         pd.dismiss();
-
-
-        recyclerView = findViewById(R.id.recycler_view);
+        ButterKnife.bind(this);
 
         movieList = new ArrayList<>();
         adapter = new MovieAdapter(this, movieList);
